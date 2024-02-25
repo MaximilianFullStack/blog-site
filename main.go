@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"log"
-	"math/rand"
 	"net/http"
 
 	"github.com/a-h/templ"
@@ -12,15 +11,12 @@ import (
 )
 
 func main() {
-	random := string(rune(rand.Int()))
-
-	component := components.Hello(random)
+	component := components.Hello()
 
 	http.Handle("/", templ.Handler(component))
 
 	http.Handle("/public/", http.StripPrefix("/public/", http.FileServer(http.Dir("public"))))
 
+	fmt.Println("Server running on [::]:3000")
 	log.Fatal(http.ListenAndServe(":3000", nil))
-
-	fmt.Println("Server running on port [::]:3000 sd")
 }
