@@ -1,24 +1,43 @@
 package components
 
+import "github.com/MaximilianFullStack/htmx-blog/structs"
+import "github.com/MaximilianFullStack/htmx-blog/utils"
+
 css articleContainer() {
 	display: flex;
 	flex-direction: column;
 	align: start;
+	max-width: 24rem;
+	margin-bottom: 2rem;
 }
 
 css articleTitle() {
 	color: #7cc6ea;
-	margin-bottom: 0px;
+	margin: 0;
 }
 
 css articleDesc() {
 	color: #46bb8b;
+	margin: 0.5rem 0px 0px 0px;
+}
+
+css li() {
+	list-style-type: none;
 }
 
 css a() {
 	text-decoration: none;
 }
 
-templ article() {
-	<a href="/article?id=1" class={ a() }><section class={ articleContainer() }><h2 class={ articleTitle() }>The Best Article</h2><p class={ articleDesc() }>This is the best article ever created in history.</p></section></a>
+templ article(_article structs.Article) {
+	<li class={ li() }>
+		<a href={ utils.GetArticleUrl(_article.ID) } class={ a() }>
+			<section class={ articleContainer() }>
+				<h2 class={ articleTitle() }>
+					{ _article.Title }
+				</h2>
+				<p class={ articleDesc() }>{ _article.Description }</p>
+			</section>
+		</a>
+	</li>
 }

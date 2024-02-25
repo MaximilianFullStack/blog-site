@@ -6,6 +6,7 @@ yarn browser-sync start \
   --ignore '*_templ.go' \
   --port 3001 \
   --proxy 'localhost:3000' \
+  --reloadThrottle 50 \
   --middleware 'function(req, res, next) { \
     res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); \
     return next(); \
