@@ -1,0 +1,24 @@
+package components
+
+css articleContainer() {
+	display: flex;
+	flex-direction: column;
+	align: start;
+}
+
+css articleTitle() {
+	color: #7cc6ea;
+	margin-bottom: 0px;
+}
+
+css articleDesc() {
+	color: #46bb8b;
+}
+
+css a() {
+	text-decoration: none;
+}
+
+templ article() {
+	<a href="/article?id=1" class={ a() }><section class={ articleContainer() }><h2 class={ articleTitle() }>The Best Article</h2><p class={ articleDesc() }>This is the best article ever created in history.</p></section></a>
+}

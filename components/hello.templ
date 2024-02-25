@@ -1,0 +1,99 @@
+package components
+
+css body() {
+	background-color: #1c1c1c;
+	font-family: "Kode Mono", monospace;
+	font-optical-sizing: auto;
+	font-weight: 400 700;
+	font-style: normal;
+}
+
+css accent() {
+	color: #F71735;
+}
+
+css titleContainer() {
+	width: full;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+}
+
+css title() {
+	font-size: 2rem;
+	color: #d8dc92;
+}
+
+css divider() {
+	background: #e9c20e;
+	width: 80%;
+	height: 2px;
+}
+
+css articlesContainer() {
+	margin-top: 4rem;
+	display: flex;
+	width: 100%;
+	align-items: center;
+	justify-content: center;
+}
+
+css footerStyle() {
+	position: fixed;
+	padding-bottom: 2.5rem;
+	width: 100%;
+	bottom: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+}
+
+css footerImg() {
+	margin-right: 24px;
+}
+
+templ nav() {
+	<nav class={ titleContainer() }><h1 class={ title() }>MaxFullStack's Website</h1><div class={ divider }></div></nav>
+}
+
+templ articles() {
+	<section class={ articlesContainer() }>
+		@article()
+	</section>
+}
+
+templ footer() {
+	<footer class={ footerStyle() }>
+		<a href="https://github.com/MaximilianFullStack" class={ footerImg() }>
+			@github()
+		</a>
+		<a href="https://twitter.com/maxfullstack" class={ footerImg() }>
+			@twitter()
+		</a>
+		<a href="https://www.linkedin.com/in/maximilianfullstack/" class={ footerImg() }>
+			@linkedIn()
+		</a>
+	</footer>
+}
+
+templ Hello(rand string) {
+	<html>
+		<head>
+			// Google Fonts (Kode Mono Variable 400-700)
+			<link rel="preconnect" href="https://fonts.googleapis.com"/>
+			<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+			<link href="https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&display=swap" rel="stylesheet"/>
+			// HTMX
+			<script src="https://unpkg.com/htmx.org@1.9.10" integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC" crossorigin="anonymous"></script>
+			<title>MaxFullStack</title>
+		</head>
+		<body class={ body() }>
+			@nav()
+			@articles()
+			@footer()
+		</body>
+	</html>
+}
